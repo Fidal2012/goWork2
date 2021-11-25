@@ -17,12 +17,6 @@ type BxdServer struct {
 }
 
 func main() {
-	/*srv := &BxdServer{}
-	http.HandleFunc("/", srv.SayHello)
-	err := http.ListenAndServe(":19990", nil)
-	if err != nil {
-		fmt.Printf("http error: %+v\n", err)
-	}*/
 	srv := new(BxdServer)
 
 	g, ctx := errgroup.WithContext(context.Background())
@@ -90,15 +84,6 @@ func main() {
 
 	fmt.Printf("errgroup exiting: %+v\n", g.Wait())
 }
-
-/*func (srv *BxdServer) StartServer() {
-	server := http.NewServeMux()
-	http.HandleFunc("/", srv.SayHello)
-	err := http.ListenAndServe(":19990", nil)
-	if err != nil {
-
-	}
-}*/
 
 func (srv *BxdServer) SayHello(writer http.ResponseWriter, request *http.Request) {
 	req := fmt.Sprintf("hello golang http!\nrequest: %+v\n", request)
